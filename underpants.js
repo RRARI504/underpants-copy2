@@ -50,6 +50,7 @@ _.typeOf = function(value){
         return 'string';
     }else if(typeof value === 'number'){
         return 'number'
+    }else if(){
 
     }
 
