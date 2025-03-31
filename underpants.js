@@ -45,7 +45,15 @@ _.identity = function(value){
 * _.typeOf("javascript") -> "string"
 * _.typeOf([1,2,3]) -> "array"
 */
+_.typeOf = function(value){
+    if(typeof value === 'string'){
+        return 'string';
+    }else if(typeof value === 'number'){
+        return 'number'
 
+    }
+
+}
 
 /** _.first
 * Arguments:
@@ -166,7 +174,7 @@ _.filter = function(arr, func){
     let output = [];
 
     for(var i = 0; i <= arr.length; i++){
-        if(func(arr[i], i, arr) === true){
+        if(func(arr[i], i, arr)){
         output.push(arr[i])
         }
     }
@@ -223,7 +231,26 @@ _.filter = function(arr, func){
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
+//I: a collection and an array
+//O: should return a new array 
 
+_.map = function(collection, func){
+    output = [];
+    if(Array.isArray(collection)){
+        for(let i = 0; i <= collection.length; i++){
+            return func(colection[i], i, collection)
+        }
+
+    }else{
+        for(let key in collection )
+    }
+
+
+
+}
+//console.log(_.map([1,2,3,4], function(e){return e * 2})); // [2, 4, 6, 8]
+
+//console.log(_.map({ a: 1, b: 2 }, function(e){ return e * 2})); // [2, 4]
 
 /** _.pluck
 * Arguments:
