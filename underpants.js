@@ -233,21 +233,20 @@ _.filter = function(arr, func){
 */
 //I: a collection and an array
 //O: should return a new array 
-
-_.map = function(collection, func){
+/*
+//_.map = function(collection, func){
     output = [];
     if(Array.isArray(collection)){
         for(let i = 0; i <= collection.length; i++){
-            return func(colection[i], i, collection)
+           output.push(func(collection[i], i, collection))
         }
 
-    }else{
-        for(let key in collection )
+    }else if(){
+       
     }
 
-
-
 }
+*/
 //console.log(_.map([1,2,3,4], function(e){return e * 2})); // [2, 4, 6, 8]
 
 //console.log(_.map({ a: 1, b: 2 }, function(e){ return e * 2})); // [2, 4]
