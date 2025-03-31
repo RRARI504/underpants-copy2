@@ -21,6 +21,10 @@ var _ = {};
 *   _.identity({a: "b"}) === {a: "b"}
 */
 
+_.identity = function(value){
+    return value;
+}
+
 
 /** _.typeOf
 * Arguments:
@@ -158,6 +162,17 @@ var _ = {};
 *   use _.each in your implementation
 */
 
+_.filter = function(arr, func){
+    let output = [];
+
+    for(var i = 0; i <= arr.length; i++){
+        if(func(arr[i], i, arr) === true){
+        output.push(arr[i])
+        }
+    }
+    return output; 
+
+}
 
 /** _.reject
 * Arguments:
