@@ -174,11 +174,16 @@ _.last = function(array, number){
 */
 
 _.indexOf = function(array, value){
-    if(!Array.isArray(value)){
-        return -1;
+    for(var i = 0; i <= array.length; i++){
+        if(array[i] === value){
+            return i;
+
+        }
+
+
+
     }
-    
-    
+    return -1
 
     
 
