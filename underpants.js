@@ -46,16 +46,21 @@ _.identity = function(value){
 * _.typeOf([1,2,3]) -> "array"
 */
 _.typeOf = function(value){
-    if(typeof value === 'string'){
+    if(typeof value === 'null' || value instanceof Date || typeof value === 'object'){
+        return 'object';
+    }else if(Array.isArray(value)){
+        return 'array';
+    }else if(typeof value === 'string'){
         return 'string';
     }else if(typeof value === 'number'){
-        return 'number'
-    }else if(){
-
-    }
-
+        return 'number'; 
+    }else if(typeof value === 'function'){
+        return 'function';    
+    }else if(typeof value === 'string'){
+            return 'string'; 
 }
 
+}
 /** _.first
 * Arguments:
 *   1) An array
