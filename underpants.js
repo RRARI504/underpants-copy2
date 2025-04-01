@@ -83,7 +83,34 @@ _.typeOf = function(value){
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
 
+_.first = function(array, number){
+    if(!Array.isArray(array)){
+        return [];
+    }//if array isnt an array return an empty array
 
+    if(isNaN(number) || number === undefined ){
+        return array[0];
+    }//if array isnt a number or if the number is undefined return the first
+    //element in the array
+    
+    if(number < 0){
+        return [];
+    }//if the number is less than zero return an empty array
+
+    if(number > array.length){
+        return array;
+    }//if the number is less than the length of the array return the array 
+
+
+    return array.slice(0, number)
+    //use .slice to extract the first element of the array and stop at whatever number is used
+     
+
+    
+
+    
+
+}
 /** _.last
 * Arguments:
 *   1) An array
@@ -103,6 +130,33 @@ _.typeOf = function(value){
 */
 
 
+_.last = function(array, number){
+    if(!Array.isArray(array)){
+        return [];
+    }//if array isnt an array return an empty array
+
+    if(isNaN(number) || number === undefined ){
+        return array.slice(-1)[0];
+    }//if array isnt a number or if the number is undefined return the last
+    //element in the array
+
+    if(number < 0){
+        return [];
+    }//if the number is less than zero return an empty array
+
+    if(number > array.length){
+        return array;
+    }//if the number is less than the length of the array return the array 
+
+    return array.slice(1, number.length);
+
+    
+
+
+
+
+
+}
 /** _.indexOf
 * Arguments:
 *   1) An array
