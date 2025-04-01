@@ -46,19 +46,23 @@ _.identity = function(value){
 * _.typeOf([1,2,3]) -> "array"
 */
 _.typeOf = function(value){
-    if(typeof value === 'null' || value instanceof Date || typeof value === 'object'){
-        return 'object';
-    }else if(Array.isArray(value)){
-        return 'array';
-    }else if(typeof value === 'string'){
+    if(typeof value === 'string'){
         return 'string';
     }else if(typeof value === 'number'){
-        return 'number'; 
-    }else if(typeof value === 'function'){
-        return 'function';    
-    }else if(typeof value === 'string'){
-            return 'string'; 
-}
+        return 'number';
+    } else if(typeof value === 'function'){
+        return 'function';
+    }else if(typeof value === 'boolean'){
+        return 'boolean';
+    }else if(typeof value === 'undefined'){
+        return 'undefined'
+    }else if(Array.isArray(value)){
+        return 'array'
+    }else if(typeof value === 'object' && value !== null){
+        return 'object'
+    }else{
+        return 'null'
+    }
 
 }
 /** _.first
@@ -288,8 +292,14 @@ _.filter = function(arr, func){
 * Examples:
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
-*/
 
+
+*/
+//_.every([2, 4, 6], function(num){ return num % 2 === 0}); // returns true because every number is even
+//_.every([2, 5, 6], function(num){ return num % 2 === 0}); // returns false because one number is not even
+
+//_.every({ a: 2, b: 4 }, function(num){ return num % 2 === 0}); // returns true because every value is even
+//_.every({ a: 2, b: 3}, function(num) { return num % 2 === 0}); // returns false because one value is not even
 
 /** _.some
 * Arguments:
@@ -312,6 +322,22 @@ _.filter = function(arr, func){
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 
+
+/*
+_.every = function(collection, func){
+    if(Array.isArray()){
+        if(){
+
+        }
+        
+    }else{
+        if(){
+
+        }
+    }
+
+}
+*/
 
 /** _.reduce
 * Arguments:
