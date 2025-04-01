@@ -173,6 +173,16 @@ _.last = function(array, number){
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
 
+_.indexOf = function(array, value){
+    if(!Array.isArray(value)){
+        return -1;
+    }
+    
+    
+
+    
+
+}
 
 /** _.contains
 * Arguments:
