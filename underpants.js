@@ -174,12 +174,12 @@ _.last = function(array, number){
 */
 
 _.indexOf = function(array, value){
-    for(var i = 0; i <= array.length; i++){
-        if(array[i] === value){
-            return i;
+    for(var i = 0; i <= array.length; i++){//iterate through array
+        if(array[i] === value){//if current iteration in array is equal to value
+            return i;//just return the current iteration or current occurence
         }
     }
-    return -1;
+    return -1;//if current iteratin not equal to value return -1
     
 
 }
@@ -199,6 +199,12 @@ _.indexOf = function(array, value){
 *   _.contains([1,"two", 3.14], "two") -> true
 */
 
+_.contains = function(array, value){
+    //condition ? expressionIfTrue : expressionIfFalse
+  for(var i = 0; i < array.length; i++){
+    return array.includes(value) ? true : false
+  }
+}
 
 /** _.each
 * Arguments:
@@ -216,6 +222,15 @@ _.indexOf = function(array, value){
 *      -> should log "a" "b" "c" to the console
 */
 
+_.each = function(collection, func){
+    for(var i = 0; i <= collection.length; i++){
+        if(Array.isArray(collection)){
+            
+
+        }
+
+    }
+}
 
 /** _.unique
 * Arguments:
