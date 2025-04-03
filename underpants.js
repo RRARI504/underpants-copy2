@@ -223,13 +223,20 @@ _.contains = function(array, value){
 */
 
 _.each = function(collection, func){
-    for(var i = 0; i <= collection.length; i++){
-        if(Array.isArray(collection)){
-            
+    if(Array.isArray(collection)){
+        for(var i = 0; i < collection.length; i++){
+            func(collection[i], i, collection)
+            //the element, it's index, <collection>
+        }
 
+    } else if(typeof collection === 'object' && typeof collection !== null){
+        for(var key in collection){
+            func(collection[key], key, collection)
+            //the property's value, it's key, <collection>
         }
 
     }
+    
 }
 
 /** _.unique
@@ -242,6 +249,17 @@ _.each = function(collection, func){
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
 
+_.unique = function(array){
+    let output = [];
+    for(var i = 0; i < array.length; i++){
+        if(_.indexOf(output, array[i]) === - 1){
+            output.push(array[i])
+
+        }
+    }
+    return output;
+    
+};
 
 /** _.filter
 * Arguments:
