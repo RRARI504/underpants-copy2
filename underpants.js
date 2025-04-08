@@ -278,16 +278,18 @@ _.unique = function(array){
 */
 
 _.filter = function(arr, func){
-    let output = [];
+    let output = [];//set an output array
 
-    for(var i = 0; i <= arr.length; i++){
+    for(var i = 0; i < arr.length; i++){//iterate over the array positively 
         if(func(arr[i], i, arr)){
+        //conditional that says if the result of invoking the function is true 
         output.push(arr[i])
+        //push the element 
         }
     }
     return output; 
 
-}
+};
 
 /** _.reject
 * Arguments:
@@ -302,6 +304,19 @@ _.filter = function(arr, func){
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
 
+_.reject = function(array, func){
+    let output = [];
+
+    for(var i = 0; i < array.length; i++){
+        if(!func(array[i], i, array)){
+            output.push(array[i])
+        }
+
+    }
+    return output;
+
+
+}
 
 /** _.partition
 * Arguments:
@@ -322,6 +337,18 @@ _.filter = function(arr, func){
 }
 */
 
+_.partition = function(array, func){
+    let output = [];
+    for(var i = 0; i < array.length; i++){
+        if(func(array[i], i, array)){
+
+
+        }
+
+    }
+
+
+}
 
 /** _.map
 * Arguments:
@@ -456,7 +483,7 @@ _.every = function(collection, func){
 */
 
 
-/** _.extend
+/** _.extend //Object.assign()
 * Arguments:
 *   1) An Object
 *   2) An Object
@@ -470,6 +497,10 @@ _.every = function(collection, func){
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+
+_.extend = function(target, ...objects){
+
+};
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
