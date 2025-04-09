@@ -338,14 +338,19 @@ _.reject = function(array, func){
 */
 
 _.partition = function(array, func){
-    let output = [];
-    for(var i = 0; i < array.length; i++){
-        if(func(array[i], i, array)){
-
-
+    let output = []; //output for truthy values
+    let outputTwo = [] //output for falsy values
+    for(var i = 0; i < array.length; i++){ //loop over the array positively 
+        if(func(array[i], i, array)){ //call function for each element, index and array
+            output.push(array[i]) //if function returns truthy add to truthy array
+        }else{
+            outputTwo.push(array[i])//if function returns falsy return to falsy array 
         }
+        //this follows same logic as rejct but to get the two seperate arrays
+        //you must use two output arrays and push both
 
     }
+    return [output, outputTwo];//return both arrays to make an array of arrays
 
 
 }
@@ -367,20 +372,29 @@ _.partition = function(array, func){
 */
 //I: a collection and an array
 //O: should return a new array 
-/*
-//_.map = function(collection, func){
-    output = [];
-    if(Array.isArray(collection)){
-        for(let i = 0; i <= collection.length; i++){
+
+_.map = function(collection, func){
+    let output = [];//output array 
+    if(Array.isArray(collection)){//checks if collection is an array
+        for(let i = 0; i < collection.length; i++){//iterates thhrough the array positively
            output.push(func(collection[i], i, collection))
+           //push the result of invoking the function on the element, index and the collection
+           //this basically saves the return value of this function
         }
 
-    }else if(){
+    }else if(typeof collection === 'object' && typeof collection !== null){
+        //checks if collection is an object and not null 
+        for(var key in collection){//iterates through the collection 
+            output.push(func(collection[key], key, collection))
+            //pushes the result of invoking the current value its key and collection
+
+        }
        
     }
+    return output;
 
 }
-*/
+
 //console.log(_.map([1,2,3,4], function(e){return e * 2})); // [2, 4, 6, 8]
 
 //console.log(_.map({ a: 1, b: 2 }, function(e){ return e * 2})); // [2, 4]
@@ -396,7 +410,15 @@ _.partition = function(array, func){
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 
+_.pluck = function(array, prop){ //instead of iterating through manually you use map
+    
+ return array.map(function(element){//return the invocation of the map function on the array 
+    //and pass in a function the takes an element and  
+    return element[prop]//return the value of the property for each object
 
+ })
+
+}
 /** _.every
 * Arguments:
 *   1) A collection
@@ -425,6 +447,22 @@ _.partition = function(array, func){
 //_.every({ a: 2, b: 4 }, function(num){ return num % 2 === 0}); // returns true because every value is even
 //_.every({ a: 2, b: 3}, function(num) { return num % 2 === 0}); // returns false because one value is not even
 
+_.every = function(collection, func){
+    if(Array.isArray(collection)){
+        for(var i = 0; i < collection.length; i++){
+            func(collection[i], i, collection)
+        }
+    }else{
+        if(typeof collection === 'object' && typeof collection !== null){
+            for(var key in collection){
+                func(collection[key], key, collection)
+
+            }
+
+        }
+    }
+
+}
 /** _.some
 * Arguments:
 *   1) A collection
