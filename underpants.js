@@ -450,19 +450,22 @@ _.pluck = function(array, prop){ //instead of iterating through manually you use
 _.every = function(collection, func){
     if(Array.isArray(collection)){
         for(var i = 0; i < collection.length; i++){
-            func(collection[i], i, collection)
+            if(func(collection[i], i, collection)){
+                return true;
+            }
         }
     }else{
         if(typeof collection === 'object' && typeof collection !== null){
             for(var key in collection){
-                func(collection[key], key, collection)
-
-            }
-
-        }
+                if(func(collection[key], key, collection)){
+                    return true;
+                }
+            } 
+        } 
     }
-
 }
+
+
 /** _.some
 * Arguments:
 *   1) A collection
