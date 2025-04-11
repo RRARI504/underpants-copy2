@@ -448,21 +448,35 @@ _.pluck = function(array, prop){ //instead of iterating through manually you use
 //_.every({ a: 2, b: 3}, function(num) { return num % 2 === 0}); // returns false because one value is not even
 
 _.every = function(collection, func){
-    if(Array.isArray(collection)){
-        for(var i = 0; i < collection.length; i++){
-            if(func(collection[i], i, collection)){
-                return true;
+
+
+    func = func || function(val) {//this is a default function assignment
+        return val;//if function not defined assign it a function that returns a value
+      };
+
+
+    if(Array.isArray(collection)){//if collection is an array 
+        for(var i = 0; i < collection.length; i++){//iterate through collection length 
+            if(!func(collection[i], i, collection)){
+                //if the result of invoking the fucntion on the current element, it's index and collection are false
+                return false;
             }
         }
     }else{
         if(typeof collection === 'object' && typeof collection !== null){
+            //checks if collection is an object and not null
             for(var key in collection){
-                if(func(collection[key], key, collection)){
-                    return true;
+                //iterates over the keys in the object 
+                if(!func(collection[key], key, collection)){
+                    //if the result of invoking the function on the current value
+                    //the current key and collection are false
+                    return false;
+                    //return false
                 }
             } 
         } 
     }
+    return true;//else return true 
 }
 
 
@@ -487,22 +501,37 @@ _.every = function(collection, func){
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 
+_.some = function(collection, func){
+    func = func || function(val) {//this is a default function assignment
+        return val;//if function not defined assign it a function that returns a value
+      };
 
-/*
-_.every = function(collection, func){
-    if(Array.isArray()){
-        if(){
+      if(Array.isArray(collection)){
+        for(var i = 0; i < collection.length; i++ ){
+            if(func(collection[i], i, collection)){
+                return true;
+
+
+            }
 
         }
-        
-    }else{
-        if(){
+
+    }else if(typeof collection === 'object' && typeof collection !== null){
+        for(var key in collection){
+            if(func(collection[key], key, collection)){
+                return true;
+
+            }
 
         }
+
     }
+    return false;
+
 
 }
-*/
+
+
 
 /** _.reduce
 * Arguments:
@@ -526,8 +555,8 @@ _.every = function(collection, func){
 
 /** _.extend //Object.assign()
 * Arguments:
-*   1) An Object
-*   2) An Object
+*   1) An Object1 (target)
+*   2) An Object2 
 *   ...Possibly more objects
 * Objectives:
 *   1) Copy properties from <object 2> to <object 1>
@@ -539,8 +568,16 @@ _.every = function(collection, func){
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
 
-_.extend = function(target, ...objects){
+_.extend = function(target, objectTwo){
+  for(var key in objectTwo){ //iterate over keys in object two 
+    if(objectTwo.hasOwnProperty(key)){//
+        target[key] = objectTwo[key]
+    }
+    
+   
 
+  }
+  return target
 };
 
 //////////////////////////////////////////////////////////////////////
