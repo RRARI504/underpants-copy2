@@ -568,23 +568,23 @@ _.reduce = function(array, func, seed){
 *   ...Possibly more objects
 * Objectives:
 *   1) Copy properties from <object 2> to <object 1>
-*   2) If more objects are passed in, copy their properties to <object 1> as well, in the order they are passed in.
+*   2) If more objects are passed in, copy their properties to <object 1> as well, 
+       //in the order they are passed in.
 *   3) Return the update <object 1>
 * Examples:
 *   var data = {a:"one"};
-*   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
+*   _.extend(data, {b:"two"}, {b:"two"}, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
+
+
 */
 
-_.extend = function(target, objectTwo){
-  for(var key in objectTwo){ //iterate over keys in object two 
-    if(objectTwo.hasOwnProperty(key)){//
-        target[key] = objectTwo[key]
+_.extend = function(target, ...objects){
+   for(var i = 0; i < objects.length; i++){
+    for(var key in objects[i]){
+        target[key] = objects[i][key]
     }
-    
-   
-
-  }
+   }
   return target
 };
 
