@@ -553,10 +553,26 @@ _.some = function(collection, func){
 */
 
 _.reduce = function(array, func, seed){
-    
+    //init output variable
+    let output;
+    if(seed === undefined){//if no seed value is given 
+        output = array[0]//take the first item in the array as seed
+        for(var i = 1; i < array.length; i++){
+            //iterate over the array
+            output = func(output, array[i], i)
+            //reassign output the result of invoking the callack on 
+            //the output, the current item in the array and the current index
+        }
 
+    }else{ //no seed value given
+        output = seed;
+        for(var i = 0; i < array.length; i++){
+            output = func(output, array[i], i)
 
+        }
 
+    }    
+    return output;
 
 
 }
